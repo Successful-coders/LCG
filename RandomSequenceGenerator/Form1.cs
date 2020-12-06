@@ -23,7 +23,7 @@ namespace RandomSequenceGenerator
         }
 
 
-        private void MultiCgButton_Click(object sender, EventArgs e)
+        private void MultiCgButton_Click(object sender, EventArgs e)//мультипликативный конгруэнтный генератор
         {
             GeneratorParameters multiParams = new GeneratorParameters(generatorParams.length, generatorParams.x0, generatorParams.a, 0);
 
@@ -35,8 +35,13 @@ namespace RandomSequenceGenerator
             {
                 infoBox.Text += (item + " ");
             }
+
+            infoBox.WriteLine();
+            var period = Generator.GetPeriod(randomSequence, out int periodLength);
+            infoBox.WriteLine("Период: " + period);
+            infoBox.WriteLine("Длина периода: " + periodLength);
         }
-        private void MixedCgButton_Click(object sender, EventArgs e)
+        private void MixedCgButton_Click(object sender, EventArgs e)//смешанный конгруэнтный генератор
         {
             int[] randomSequence = Generator.CreateSequence(generatorParams);
 
@@ -46,6 +51,11 @@ namespace RandomSequenceGenerator
             {
                 infoBox.Text += (item + " ");
             }
+
+            infoBox.WriteLine();
+            var period = Generator.GetPeriod(randomSequence, out int periodLength);
+            infoBox.WriteLine("Период: " + period);
+            infoBox.WriteLine("Длина периода: " + periodLength);
         }
         private void readDataButton_Click(object sender, EventArgs e)
         {

@@ -72,27 +72,27 @@ namespace RandomSequenceGenerator
             else
                 return true;
         }
-        public static int GetPeriodlength(int[] sequence)
+        public static string GetPeriod(int[] sequence, out int periodLength)
         {
-            int periodLength = 1;
+            periodLength = 1;
             string period = "";
 
-            period += sequence[0];
+            period += " " + sequence[0];
             for (int i = 1; i < sequence.Length; i++) // поиск периода
             {
                 string tmp = "";
 
                 for (int j = 0; j + i < sequence.Length && j < periodLength; j++)
-                    tmp += sequence[i + j];
+                    tmp += " " + sequence[i + j];
 
                 if (period == tmp)
-                    return periodLength;
+                    return period;
 
                 periodLength++;
-                period += sequence[i];
+                period += " " + sequence[i];
             }
 
-            return periodLength;
+            return period;
         }
     }
 }
